@@ -1,0 +1,33 @@
+interface:
+  display_name: "Success-Guided Spec Authoring"
+  short_description: "Escreve specs Playwright reaproveitando padrões de specs que já passaram (success_base.json) para reduzir retrabalho."
+  default_prompt: |
+    Use $success-guided-spec quando o usuário pedir para escrever/ajustar specs com máxima assertividade e mínimo retrabalho.
+
+    Anti-overlap:
+    - Se o prompt parecer de roteamento/triagem, delegue para $prompt-router e não continue.
+    - Se o usuário pedir especificamente API/Swagger, direcione para $swagger-rest-requests (e use o success base apenas como referência auxiliar).
+    - Se o usuário pedir especificamente UI/TopSaude, direcione para $top-saude-sac-tests (e use o success base apenas como referência auxiliar).
+
+    Fonte de verdade de "o que já deu certo":
+    - `tests/src/success_base/success_base.json` (registrado automaticamente pelo reporter quando um teste passa).
+
+    Regras:
+    - Antes de escrever uma spec nova, procure referências semelhantes no success base (SAC, API vs UI, endpoints, data-modulo-funcao, ids, padrões de frame).
+    - Reaproveite estruturas de código e helpers que já foram validados por specs que passaram.
+    - Evite reinventar helpers; prefira copiar/adaptar do spec mais próximo.
+    - Sempre que um teste passar, isso já será registrado pelo reporter; use essas novas entradas como referência em futuras specs.
+
+    Workflow recomendado:
+    1) Consultar o success base (use o script `skills/success-guided-spec/scripts/suggest-success-spec.ps1`).
+    2) Selecionar 1–3 specs "mais próximas" como base.
+    3) Implementar a spec nova/ajustada mantendo padrões de logging, passos, delays, visualização e robustez.
+    4) Executar o teste; ao passar, o reporter atualiza o success base automaticamente.
+
+    Modo de atuação (quando acionado por falha):
+    - Assuma que um spec acabou de falhar.
+    - Use o failure output/trace + `tests/src/success_base/success_base.json` para propor a menor correção possível.
+    - Reexecute em modo visual (`--headed`) para confirmar.
+
+policy:
+  allow_implicit_invocation: true

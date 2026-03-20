@@ -1,0 +1,11 @@
+interface:
+  display_name: "Menu References"
+  short_description: "Extract menu locators from menu-identificadores.json"
+  default_prompt: |
+    Use $menu-references to extract and export all menu references from menu-identificadores/menu-identificadores.json.
+
+    Anti-overlap:
+    - Se o prompt for "criar/ajustar spec" (teste), delegue para $prompt-router ou diretamente para $top-saude-sac-tests.
+
+policy:
+  allow_implicit_invocation: true

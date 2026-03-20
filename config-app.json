@@ -1,0 +1,20 @@
+{
+  "login": {
+    "topSaude": {
+      "url": "http://10.130.113.19/TSNMVC/TSNMVC/Home/AreaLogada",
+      "usuario_env": "TOPSAUDE_USUARIO",
+      "senha_env": "TOPSAUDE_SENHA"
+    },
+    "api": {
+      "url": "http://10.130.113.19/APIs/GerenciadorMovimentacoesBeneficiarioApi/swagger/index.html",
+      "apiTipoToken": {
+        "usuario_env": "API_TOKEN_USUARIO",
+        "senha_env": "API_TOKEN_SENHA"
+      },
+      "apiTipoBasic": {
+        "Username_env": "API_BASIC_USERNAME",
+        "Password_env": "API_BASIC_PASSWORD"
+      }
+    }
+  }
+}

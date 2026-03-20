@@ -1,0 +1,28 @@
+{
+  "objetivo": "Autenticar na API e consultar contrato via Swagger/REST",
+  "sac": { "numero": "SAC_100002", "nome": "API_CONSULTA_CONTRATO" },
+  "env": {
+    "base_url": "https://hml-v12topsaude.segurosunimed.com.br/APIs/GerenciadorMovimentacoesBeneficiarioApi/swagger/index.html",
+    "usuario": "",
+    "senha": "",
+    "base_db_preferida": "DES8"
+  },
+  "entrada": {
+    "contratos": ["19940533"],
+    "request_login": "/api/auth/usuarios",
+    "request_consulta_contrato": "/api/movimentacoes/consulta-contrato/{numeroContrato}"
+  },
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 2000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "passos": [
+    "1 - Fazer autenticação na API (request_login) para obter token",
+    "2 - Consultar o contrato 19940533 no endpoint GET request_consulta_contrato",
+    "3 - Validar que o status code do response é 200"
+  ],
+  "sucesso_quando": "quando o endpoint request_consulta_contrato retornar status code 200"
+}

@@ -1,0 +1,1333 @@
+{
+  "dadosBasicos": {
+    "codigoOperadora": 1,
+    "codigoFilial": 1,
+    "codigoInspetoria": 1,
+    "codigoProduto": 1,
+    "formaContratacao": 1,
+    "codigoTipoContrato": 5,
+    "codigoPorteContrato": 21,
+    "tipoProduto": 1,
+    "vigencia": "2026-01-26",
+    "codigoProdutorTS": 1234,
+    "codigoCorretorTS": 1234,
+    "codRegiao": "143",
+    "parametrizacoes": {
+      "exigeTermoOferencimentoBeneficiarioContributario": false
+    },
+    "dadosGerais": {
+      "pontoEquilibrio": 70,
+      "codigoFormaApuracaoSinistralidade": 1
+    },
+    "contato": [
+      {
+        "dadosContato": {
+          "nome": "DANIELLE CRISTINE PEREIRA DA SILVA MENDONCA",
+          "dataNascimento": "2000-09-05"
+        },
+        "codigoClassificacao": [
+          4
+        ],
+        "telefones": {
+          "celular": {
+            "ddd": 37,
+            "numero": "998407212"
+          }
+        },
+        "envioDeEmail": {
+          "email": "danielle@castroseguros.com",
+          "enviaEmailMovimentacaoCadastral": true,
+          "enviaEmailDowngrade": true
+        }
+      }
+    ]
+  },
+  "empresaContratante": {
+    "nome": "TESTE CONTRATO PRINCIPAL",
+    "razaoSocial": "TESTE CONTRATO PRINCIPAL",
+    "cnpj": "26111624656822",
+    "codigoAtividadeEconomica": 4683400,
+    "codTipoSociedade": 3,
+    "situacaoCadastralCNPJ": "Ativo",
+    "dataFundacao": "2025-04-05",
+    "observacao": "Proposta preenchida via PLANIUM"
+  },
+  "enderecosContratante": {
+    "endereco": [
+      {
+        "tipoEndereco": {
+          "localizacao": true,
+          "correspondencia": true,
+          "informacoesFinanceiras": true
+        },
+        "cep": 35300104,
+        "logradouro": "AV JOAO CAETANO NASCIMENTO",
+        "numero": 1405,
+        "codigoMunicipio": 2885,
+        "uf": "MG",
+        "codigoBairro": 3721
+      }
+    ]
+  },
+  "faturamento": {
+    "dadosPrimeiroBoleto": {
+      "faturaPrimeiroBoleto": "S",
+      "TipoInclusaoGrupo": "ContratoPrincipalExistente",
+      "codigoTsContratoPrincipal": "19940533",
+      "numeroProposta": "8800001000001185",
+      "quantidadeVidas": 2
+    }
+  },
+  "planosContratados": [
+    {
+      "codigoPlano": "PMEEFAPCP"
+    },
+    {
+      "codigoPlano": "PMECPENFCP"
+    }
+  ],
+  "precos": [
+    {
+      "codigoPlano": "PMEEFAPCP",
+      "codigoTipoValor": 1,
+      "taxaAdexao": {
+        "tipo": "Valor"
+      },
+      "tipoFaixaEtaria": {
+        "ativo": {
+          "titular": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          }
+        },
+        "inativo": {
+          "titular": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          }
+        }
+      },
+      "valorPorFaixaEtaria": {
+        "ativo": {
+          "titular": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            }
+          }
+        },
+        "inativo": {
+          "titular": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 289.08
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 353.83
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 443.04
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 489.6
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 521.48
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 604.9
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 723.1
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 867.24
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 1029.62
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1734.49
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "codigoPlano": "PMECPENFCP",
+      "codigoTipoValor": 1,
+      "taxaAdexao": {
+        "tipo": "Valor"
+      },
+      "tipoFaixaEtaria": {
+        "ativo": {
+          "titular": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          }
+        },
+        "inativo": {
+          "titular": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "codigo": 3
+            },
+            "posImplantacao": {
+              "codigo": 3
+            }
+          }
+        }
+      },
+      "valorPorFaixaEtaria": {
+        "ativo": {
+          "titular": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            }
+          }
+        },
+        "inativo": {
+          "titular": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixaEtaria": [
+                {
+                  "faixa": 1,
+                  "mensalidade": 257.58
+                },
+                {
+                  "faixa": 2,
+                  "mensalidade": 315.27
+                },
+                {
+                  "faixa": 3,
+                  "mensalidade": 394.76
+                },
+                {
+                  "faixa": 4,
+                  "mensalidade": 436.25
+                },
+                {
+                  "faixa": 5,
+                  "mensalidade": 464.64
+                },
+                {
+                  "faixa": 6,
+                  "mensalidade": 538.98
+                },
+                {
+                  "faixa": 7,
+                  "mensalidade": 644.31
+                },
+                {
+                  "faixa": 8,
+                  "mensalidade": 772.73
+                },
+                {
+                  "faixa": 9,
+                  "mensalidade": 917.41
+                },
+                {
+                  "faixa": 10,
+                  "mensalidade": 1545.47
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "opcionais": [
+    {
+      "codigoPlano": "PMEEFAPCP",
+      "codigoAditivo": 89,
+      "regraContrato": "TodosBeneficiarios",
+      "tipoValor": "ValorFixo",
+      "percentualSobreMensalidade": 0,
+      "valorFixo": {
+        "valorTitular": 14.5,
+        "valorDependente": 14.5,
+        "valorAgregado": 14.5
+      },
+      "dataInicioValidade": "2026-01-26"
+    },
+    {
+      "codigoPlano": "PMECPENFCP",
+      "codigoAditivo": 90,
+      "regraContrato": "TodosBeneficiarios",
+      "tipoValor": "ValorFixo",
+      "percentualSobreMensalidade": 0,
+      "valorFixo": {
+        "valorTitular": 16.5,
+        "valorDependente": 16.5,
+        "valorAgregado": 16.5
+      },
+      "dataInicioValidade": "2026-01-26"
+    }
+  ]
+}

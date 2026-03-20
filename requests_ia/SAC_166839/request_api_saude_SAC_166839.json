@@ -1,0 +1,30 @@
+{
+  "objetivo": "Implantar contrato utilizando o passo a passo de requisições API, seguindo o padrão aprendido em C:/Users/erick.cremona/.codex/memories/sac-requests-aprendizado.md",
+  "sac": { "numero": "SAC_166839", "nome": "Implantar Contrato" },
+  "env": {
+    "base_url": "http://10.130.113.19/APIs/GerenciadorMovimentacoesBeneficiarioApi/swagger/index.html",
+    "usuario": "",
+    "senha": "",
+    "base_db_preferida": "DES8"
+  },
+  "entrada": {
+    "request_login": "/api/auth/usuarios",
+    "request_consulta_contrato": "/api/movimentacoes/consulta-contrato/{numeroContrato}",
+    "request_contrato": "/api/movimentacoes/contrato",
+    "json_contrato": "json_api_request.json"
+  },
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 2000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "passos": [
+    "1 - Autenticar no endpoint request_login e obter token",
+    "2 - Executar request_contrato (POST) com json_contrato (opcional)",
+    "3 - Executar request_consulta_contrato (GET) com {numeroContrato}",
+    "4 - Validar status code e campos do response"
+  ],
+  "sucesso_quando": "status 200 e numeroContrato presente no response"
+}

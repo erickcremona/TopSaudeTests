@@ -1,0 +1,49 @@
+{
+  "sac": {
+    "numero": "SAC_100003",
+    "nome": "Consulta Beneficiario - Carteirinha Bloqueada SIM"
+  },
+  "env": {
+    "base_url": "http://10.130.113.19/TSNMVC/TSNMVC/Home/AreaLogada",
+    "usuario": "",
+    "senha": ""
+  },
+  "entrada": {
+    "associados": [
+      "9940002516717008"
+    ],
+    "aguardar_contrato_carregar_s": 10
+  },
+  "menu": {
+    "consulta_beneficiario": {
+      "data_modulo_funcao": "40.ATB0082",
+      "texto": "Consulta Beneficiario"
+    }
+  },
+  "telas": {
+    "consulta_beneficiario": {
+      "frame_url_hint": "cal0087a.asp",
+      "campos": {
+        "num_associado_id": "num_associado",
+        "acao_continuar_id": "btn_acao_continuar",
+        "acao_continuar_texto": "Continuar"
+      }
+    }
+  },
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 30000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "passos": [
+    "1 - abrir TopSaude (AreaLogada)",
+    "2 - informar usuario/senha e entrar",
+    "3 - navegar no menu Consulta Beneficiario (40.ATB0082)",
+    "4 - informar o numero do associado no campo num_associado",
+    "5 - clicar no botao Continuar (id=btn_acao_continuar quando existir)",
+    "6 - validar 'Carteirinha Bloqueada: SIM' na tela principal e exibir o objetivo do teste"
+  ],
+  "sucesso_quando": "A tela do associado exibe 'Carteirinha Bloqueada: SIM'."
+}

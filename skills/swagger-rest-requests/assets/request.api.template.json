@@ -1,0 +1,34 @@
+{
+  "objetivo": "descreva o objetivo do cenário de API (Swagger) em uma frase",
+  "sac": { "numero": "SAC_XXXXXX", "nome": "NOME_DO_CENARIO_API" },
+  "env": {
+    "base_url": "http://<host>/<api>/swagger/index.html",
+    "usuario": "",
+    "senha": "",
+    "base_db_preferida": "DES8"
+  },
+  "entrada": {
+    "entradas": [
+      { "tipo": "contrato", "valores": ["19940533"] }
+    ],
+    "contratos": ["19940533"],
+    "request_login": "/api/auth/usuarios",
+    "request_consulta_contrato": "/api/movimentacoes/consulta-contrato/{numeroContrato}",
+    "request_contrato": "/api/movimentacoes/contrato",
+    "json_contrato": "json_api_request.json"
+  },
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 2000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "passos": [
+    "1 - Autenticar no endpoint request_login e obter token",
+    "2 - Executar request_contrato (POST) com json_contrato (opcional)",
+    "3 - Executar request_consulta_contrato (GET) com {numeroContrato}",
+    "4 - Validar status code e campos do response"
+  ],
+  "sucesso_quando": "defina um critério objetivo (ex.: status 200 + numeroContrato presente no response)"
+}

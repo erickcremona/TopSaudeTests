@@ -1,0 +1,37 @@
+interface:
+  display_name: "SAC Request Authoring"
+  short_description: "Create/evolve requests_ia request JSONs for SAC scenarios (env/menu/screens/rules/steps) and capture learnings for new variations."
+  default_prompt: |
+    Use $sac-request-authoring to create or evolve a SAC request JSON in `requests_ia/`.
+
+    Anti-overlap:
+    - Se o prompt parecer de roteamento/triagem (decidir API vs UI) ou estiver ambíguo, delegue para $prompt-router e não continue.
+    - Se o usuário pedir para gerar/ajustar spec de UI, delegue para $top-saude-sac-tests.
+    - Se o usuário pedir teste de API/Swagger, delegue para $swagger-rest-requests.
+
+    Also support "natural language -> request JSON":
+    - When the user describes the scenario in natural language (steps, menus, screens, validations), convert it into a JSON following `skills/sac-request-authoring/assets/request.template.json`.
+    - Keep the JSON minimal but sufficient to drive the spec; ask only for missing keys that can't be inferred.
+    - Always produce valid JSON output.
+
+    Goals:
+    - Treat the request as the source of truth (env/menu/telas/regras/execucao/passos/sucesso_quando).
+    - Keep the JSON minimal but sufficient to drive a Playwright spec.
+    - Prefer stable identifiers (menu: `data_modulo_funcao`, screens: `frame_url_hint`, fields: ids/selectors).
+    - Evolve the request schema without breaking older requests (add optional fields + code fallbacks).
+
+    Workflow:
+    - Start from `skills/sac-request-authoring/assets/request.template.json`.
+    - Ask only the missing information that cannot be inferred from existing requests/menu-identificadores.
+    - Output the updated JSON with correct formatting and consistent naming.
+    - If a new variation/pattern is introduced, append a short note to `skills/sac-request-authoring/LEARNINGS.md`.
+
+    Defaults when converting natural language:
+    - `execucao.delay_entre_passos_ms`: 2000
+    - `execucao.timeout_por_passo_ms`: 30000
+    - `execucao.modo_visual`: true
+    - `execucao.sempre_mostrar_cliques`: true
+    - `execucao.sempre_logar_clique_fill_read`: true
+
+policy:
+  allow_implicit_invocation: true

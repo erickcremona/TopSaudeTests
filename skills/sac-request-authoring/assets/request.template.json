@@ -1,0 +1,45 @@
+{
+  "sac": { "numero": "SAC_XXXXXX", "nome": "NOME_DO_CENARIO" },
+  "env": {
+    "base_url": "http://<host>/<app>/Home/AreaLogada",
+    "usuario": "",
+    "senha": "",
+    "base_db_preferida": "DES8"
+  },
+  "entrada": {
+    "entradas": [
+      { "tipo": "contrato", "valores": ["00000000000"] }
+    ],
+    "contratos": ["00000000000"],
+    "aguardar_contrato_carregar_s": 10
+  },
+  "menu": {
+    "fonte": ["tests/menu-identificadores/menu-identificadores.json", "tests/menu-identificadores/MENU_IDENTIFICADORES.md"],
+    "funcao_exemplo_1": { "data_modulo_funcao": "00.AAA0.0", "texto": "Texto (opcional)" },
+    "funcao_exemplo_2": { "data_modulo_funcao": "00.AAA0.1", "texto": "Texto (opcional)" }
+  },
+  "telas": {
+    "tela_exemplo_1": { "frame_url_hint": "xxx0000a.asp", "campo_exemplo_id": "campo_id" },
+    "tela_exemplo_2": {
+      "frame_url_hint": "xxx0001a.asp",
+      "campo_exemplo_id": "campo_id",
+      "acao_exemplo": "Continuar",
+      "fechar_janela_selector": "a.k-window-action.k-link"
+    }
+  },
+  "regras": {},
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 30000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "saida": {
+    "spec_dir": "tests/{numero_sac}/",
+    "video": { "por_contrato": true, "formato": "webm", "nome": "{contrato}.webm" },
+    "relatorio_md": "{numero_sac}_report.md"
+  },
+  "passos": ["1-?: descreva os passos numerados aqui"],
+  "sucesso_quando": "Defina o critério de sucesso observável na UI"
+}

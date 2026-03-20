@@ -1,0 +1,12 @@
+interface:
+  display_name: "Funcoes Elementos HTML"
+  short_description: "Acoes indexadas em elementos HTML"
+  default_prompt: |
+    Use $funcoes-elementos-html para aplicar a classe FuncoesElementosHtml e suas acoes indexadas.
+
+    Anti-overlap:
+    - Se o prompt parecer de roteamento/triagem, delegue para $prompt-router.
+    - Se o usuário estiver pedindo para gerar spec completa, delegue para $top-saude-sac-tests (UI) ou $swagger-rest-requests (API).
+
+policy:
+  allow_implicit_invocation: true

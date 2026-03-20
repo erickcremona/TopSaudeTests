@@ -1,0 +1,32 @@
+interface:
+  display_name: "TopSaude SAC Tests"
+  short_description: "Generate Playwright SAC specs from requests_ia inputs using menu-identificadores + robust frame handling + visual clicks."
+  default_prompt: |
+    Use $top-saude-sac-tests to create/adjust a Playwright SAC spec driven by a request JSON in `requests_ia/` (e.g. `requests_ia/request_top_saude`).
+
+    Anti-overlap:
+    - Se o prompt parecer de roteamento/triagem (decidir API vs UI) ou estiver ambíguo, delegue para $prompt-router e não continue.
+    - Se o usuário estiver falando de API/Swagger/endpoints/token/status code, delegue para $swagger-rest-requests.
+
+    Follow the reference implementation `tests/SAC_166839/sac-166839-vcom.spec.ts` for:
+    - one test per input item when per-item video is required (do not assume only contract)
+    - menu navigation derived from `tests/menu-identificadores/menu-identificadores.json` using `attrs["data-modulo-funcao"]`
+    - robust frame/iframe detection (DOM-first, url-hint fallback)
+    - visual click evidence (center + highlight) and logging for click/fill/read
+    - strict derived-data rules (digits from `#nome_grupo_empresa.value` -> fill `#cod_grupo_empresa`)
+    - step-level timeouts (~30s) and 2s delay between steps
+
+    Scenario inputs:
+    - Do not assume the request is driven exclusively by `entrada.contratos`.
+    - The request may use different input types (contract/associado/pedido/cpf/cnpj) and may include more than one type at once.
+    - Prefer `entrada.entradas[]` with `{ tipo, valores[] }`; treat `entrada.contratos[]` as a compat alias for `tipo=contrato`.
+
+    Execução visual:
+    - Quando o usuário pedir "modo visual", rodar com `--headed` por padrão (e `--workers=1` quando necessário), a menos que ele peça explicitamente `--ui`.
+
+    Execução automática após gerar spec:
+    - Depois de gerar/alterar o spec, execute automaticamente em modo visual (`--headed` e, quando necessário, `--workers=1 --reporter=line`).
+    - Se falhar, encaminhe para $success-guided-spec para correção baseada no success base e então reexecute.
+
+policy:
+  allow_implicit_invocation: true

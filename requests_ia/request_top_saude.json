@@ -1,0 +1,69 @@
+{
+  "objetivo": "use o padrão aprendido em C:/Users/erick.cremona/.codex/memories/sac-requests-aprendizado.md e adapte ao request requests_ia/request_SAC_166839",
+  "sac": { "numero": "SAC_166839", "nome": "VCOM" },
+  "env": {
+    "base_url": "http://10.130.113.19/TSNMVC/Account/Login",
+    "usuario": "",
+    "senha": "",
+    "base_db_preferida": "DES8"
+  },
+  "entrada": {
+    "contratos": ["19940533"],
+    "aguardar_contrato_carregar_s": 10
+  },
+  "menu": {
+    "fonte": ["tests/menu-identificadores/menu-identificadores.json", "tests/menu-identificadores/MENU_IDENTIFICADORES.md"],
+    "alteracao": { "data_modulo_funcao": "80.CB10.4", "texto": "Alteração" },
+    "registra_grupo_contrato": { "data_modulo_funcao": "80.CB10.10", "texto": "Registra Grupo Contrato" }
+  },
+  "telas": {
+    "alteracao": { "frame_url_hint": "ass0086a.asp", "campo_contrato_id": "num_contrato" },
+    "contrato": {
+      "frame_url_hint": "ass0045a.asp",
+      "somente_mostrar_campo_id": "ind_administradora",
+      "campo_grupo_id": "nome_grupo_empresa",
+      "botao_limpar_id": "idAcaoLimpar",
+      "fechar_janela_selector": "a.k-window-action.k-link"
+    },
+    "registra_grupo_contrato": {
+      "frame_url_hint": "ass0094a.asp",
+      "campo_grupo_id": "cod_grupo_empresa",
+      "acao_continuar": "Continuar"
+    }
+  },
+  "regras": {
+    "grupo_digits_deve_vir_de": "document.querySelector('#nome_grupo_empresa').value (somente numeros)",
+    "se_grupo_vazio_pular_registra_grupo_contrato": true,
+    "na_tela_registra_grupo_contrato_preencher_apenas": "#cod_grupo_empresa",
+    "nunca_informar_numero_do_contrato_no_campo_de_grupo": true
+  },
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 30000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "saida": {
+    "spec_dir": "tests/{numero_sac}/",
+    "video": { "por_contrato": true, "formato": "webm", "nome": "{contrato}.webm" },
+    "relatorio_md": "{numero_sac}_report.md",
+    "skill_referencia": [
+      "tests/menu-identificadores/menu-identificadores.json",
+      "tests/menu-identificadores/MENU_IDENTIFICADORES.md",
+      "skills/sac-request-authoring/SKILL.md",
+      "skills/funcoes-elementos-html/SKILL.md",
+      "skills/sac-request-authoring/assets/request.template.json"
+    ]
+  },
+  "passos": [
+    "1-4: abrir URL, preencher usuario/senha, entrar",
+    "5-6: para cada contrato, validar area logada",
+    "7-10: menu Alteracao (80.CB10.4), informar num_contrato com fallback e retirar foco",
+    "11-15: aguardar carregar contrato (ass0045a), scroll fim, mostrar ind_administradora (nao clicar), ler grupo de nome_grupo_empresa.value (digits), scroll inicio",
+    "16: clicar Limpar e fechar janela",
+    "17: se grupo vazio, proximo contrato",
+    "18-20: menu Registra Grupo Contrato (80.CB10.10), preencher cod_grupo_empresa com grupo (digits), continuar, fechar tela"
+  ],
+  "sucesso_quando": "Exibir a tela com os contratos do grupo na funcao 'Registra Grupo Contrato'"
+}

@@ -1,0 +1,69 @@
+interface:
+  display_name: "Swagger REST Requests"
+  short_description: "Cria e executa testes Playwright de API (REST) a partir de um passo a passo + URL do Swagger."
+  default_prompt: |
+    Use $swagger-rest-requests para criar (ou ajustar) um teste automatizado de **API REST** baseado em um **Swagger**.
+
+    Operação em “time de agentes” (conceito):
+    - Atue como o dono/orquestrador da tarefa de API e mantenha o trabalho dividido em entregas verificáveis (request JSON → spec → execução).
+    - Evite sobreposição: não execute duas abordagens em paralelo; se precisar de ajuda, faça handoff explícito para 1 skill por vez.
+    - Referência do padrão do repo: `skills/AGENT_TEAMS.md`.
+
+    Anti-overlap:
+    - Se o prompt parecer de roteamento/triagem (decidir API vs UI) ou estiver ambíguo, delegue para $prompt-router e não continue.
+    - Se o usuário pedir teste de UI/tela/menu/data-modulo-funcao, delegue para $top-saude-sac-tests.
+
+    Também suporte "linguagem natural -> request JSON":
+    - Quando o usuário descrever o cenário em linguagem natural (ex.: "abre o swagger, autentica, faz POST X com body Y, depois GET Z e valida 200"),
+      converta isso para um arquivo JSON seguindo `skills/swagger-rest-requests/assets/request.api.template.json`.
+    - Se o usuário informar o SAC (ex.: SAC_166839), salve em `requests_ia/<SAC>/request_api_<nome>.json` (ou no caminho solicitado).
+    - Sempre gere JSON válido; não invente endpoints que o usuário não mencionou (quando faltar, pergunte).
+
+    Entrada típica do usuário:
+    - URL do Swagger (ex.: http://10.130.113.19/APIs/GerenciadorMovimentacoesBeneficiarioApi/swagger/index.html)
+    - passo a passo (lista numerada) do que executar/validar
+    - endpoints (paths) e dados (login/payloads) se existirem
+    - se houver, um arquivo request JSON em `requests_ia/` como fonte de verdade
+
+    Regras:
+    - Siga o passo a passo do usuário na ordem; não invente passos.
+    - Não assuma que a entrada do cenário será sempre por `entrada.contratos`: pode ser `associado`, `pedido`, `cpf`, `cnpj`, etc, e pode haver mais de um tipo de entrada no mesmo request. Prefira `entrada.entradas[]` e trate `entrada.contratos[]` como compat/alias.
+    - Quando faltar informação para executar um passo (schema do login, onde vem o token, headers exigidos), pergunte objetivamente ou implemente 2–3 tentativas compatíveis (com fallback e logs claros).
+    - Prefira Playwright `APIRequestContext` para executar as requisições, mas **sempre abra o Swagger UI durante o teste** para o usuário acompanhar o passo a passo.
+    - Sempre mostrar o passo a passo: use `test.step(...)` para cada passo do usuário e para sub-passos críticos (abrir swagger, authorize, executar cada endpoint).
+    - Sempre evidenciar onde está sendo clicado: destaque (outline) o elemento antes de `click/fill/execute` na UI do Swagger.
+    - Sempre manter o elemento-alvo no meio da tela: faça scroll/centralize (`scrollIntoView({ block: "center" })`) antes de destacar e clicar.
+    - Sempre aguarde **2 segundos** entre cada passo (`delay_entre_passos_ms=2000` por padrão, podendo ser sobrescrito no request).
+    - Para execução visual, prefira `--headed --workers=1 --reporter=line` (ou `--ui` quando o usuário pedir UI).
+    - Quando o usuário pedir "modo visual", por padrão usar `--headed` (não `--ui`), a menos que ele peça explicitamente `--ui`.
+    - Converta URL do Swagger para base da API removendo `/swagger/index.html` (ou `/swagger`).
+    - Se um endpoint de criação/implantação falhar por dado duplicado (ex.: CNPJ já integrado), tente auto-ajustar o payload (gerar CNPJ válido, atualizar `empresaContratante.cnpj`, persistir no arquivo) e reenviar.
+    - Para `json_api_request.json`, sempre gere um CNPJ sem pontuação preferencialmente via `https://www.4devs.com.br/gerador_de_cnpj` e atualize o campo `cnpj` antes de enviar o request (se a rede/site estiver indisponível, usar gerador local como fallback).
+
+    Defaults ao converter linguagem natural:
+    - `execucao.delay_entre_passos_ms`: 2000
+    - `execucao.timeout_por_passo_ms`: 2000
+    - `execucao.modo_visual`: true
+    - `execucao.sempre_mostrar_cliques`: true
+    - `execucao.sempre_logar_clique_fill_read`: true
+    - Se o usuário não fornecer `sucesso_quando`, derive do passo final (ex.: "status 200" + campo chave no response).
+
+    Saída esperada:
+    - Um request JSON em `requests_ia/...` seguindo o template do skill (quando o usuário descrever em linguagem natural ou pedir para gerar request).
+    - Um spec Playwright em `tests/<SAC>/...spec.ts` (ou `tests/api/...spec.ts`) executável com `cmd /c npx playwright test "..."`
+
+    Execução automática após gerar spec:
+    - Depois de gerar/alterar o spec, execute automaticamente em modo visual (`--headed --workers=1 --reporter=line`).
+    - Se falhar, encaminhe para $success-guided-spec para correção baseada no success base e então reexecute.
+
+    Visualização completa do passo a passo (Swagger UI):
+    - Em modo visual, sempre executar também o fluxo pela UI do Swagger (Try it out -> preencher request -> Execute) para o usuário ver cada endpoint.
+    - Para autenticação, preferir obter o token pelo próprio Swagger UI (executando o POST de login na UI), aguardar o response e então preencher `Authorize` com `Bearer {token}`.
+    - Destacar e centralizar cada click/fill/execute (outline + scroll to center).
+    - Não colapsar/fechar o endpoint na UI durante o passo a passo; manter o opblock aberto até concluir o `Execute`.
+    - Aplicar delay de ~2s entre subações na UI (open, Try it out, fill, Execute).
+    - Sempre mostrar o resultado do response (status + body) no console; redigir tokens/segredos antes de logar.
+    - No Swagger UI, após o `Execute`, rolar o response até o fim (scroll) para o usuário visualizar todo o JSON.
+
+policy:
+  allow_implicit_invocation: true

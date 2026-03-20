@@ -1,0 +1,215 @@
+{
+  "sac": {
+    "numero": "SAC_100000",
+    "nome": "Consulta Beneficiario"
+  },
+  "env": {
+    "base_url": "http://10.130.113.19/TSNMVC/TSNMVC/Home/AreaLogada",
+    "usuario": "",
+    "senha": "",
+    "base_db_preferida": "DES8"
+  },
+  "entrada": {
+    "associados": [
+      "9942890280304008"
+    ],
+    "aguardar_contrato_carregar_s": 10
+  },
+  "menu": {
+    "fonte": [
+      "tests/menu-identificadores/menu-identificadores.json",
+      "tests/menu-identificadores/MENU_IDENTIFICADORES.md",
+      "skills/sac-request-authoring/SKILL.md",
+      "skills/funcoes-elementos-html/SKILL.md",
+      "skills/sac-request-authoring/assets/request.template.json"
+    ],
+    "consulta_beneficiario": {
+      "data_modulo_funcao": "40.ATB0082",
+      "texto": "Consulta Beneficiario"
+    }
+  },
+  "telas": {
+    "consulta_beneficiario": {
+      "frame_url_hint": "cal0087a.asp",
+      "campos": {
+        "num_associado_id": "num_associado",
+        "acao_continuar_texto": "Continuar"
+      },
+      "acoes_html": [
+        {
+          "index": 1,
+          "acao_index": 2,
+          "elemento_index": 1,
+          "op": {
+            "valor": "9942890280304008"
+          }
+        },
+        {
+          "index": 2,
+          "acao_index": 3,
+          "elemento_index": 2
+        }
+      ]
+    }
+  },
+  "regras": {
+    "associado_digits_deve_vir_de": "entrada.associados (somente numeros)"
+  },
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 30000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "saida": {
+    "spec_dir": "tests/{numero_sac}/",
+    "video": {
+      "por_contrato": true,
+      "formato": "webm",
+      "nome": "{contrato}.webm"
+    },
+    "relatorio_md": "{numero_sac}_report.md"
+  },
+  "passos": [
+    "1-4: abrir URL, preencher usuario/senha, entrar, validar area logada",
+    "5-6: para cada associado, validar area logada",
+    "7-10: menu Consulta Beneficiario (40.ATB0082), informar num_associado, clicar Continuar",
+    "11-14: aguardar carregar tela (cal0087b), scroll fim, mostrar dados do beneficiario, scroll inicio",
+    "15: clicar Sair do atendimento"
+  ],
+  "sucesso_quando": "Tela de Consulta Beneficiario exibida com dados do associado.",
+  "referencias": [
+    "requests_ia/request_SAC_100000"
+  ],
+  "acoes_html_indices": {
+    "1": "exibir",
+    "2": "preencher",
+    "3": "clicar",
+    "4": "duplo-clique",
+    "5": "clique-direito",
+    "6": "hover",
+    "7": "focar",
+    "8": "desfocar",
+    "9": "teclar",
+    "10": "selecionar-valor",
+    "11": "selecionar-label",
+    "12": "selecionar-indice",
+    "13": "marcar",
+    "14": "desmarcar",
+    "15": "alternar",
+    "16": "upload",
+    "17": "limpar",
+    "18": "ler-texto",
+    "19": "ler-valor",
+    "20": "ler-atributo",
+    "21": "esperar-visivel",
+    "22": "esperar-oculto",
+    "23": "rolar",
+    "24": "screenshot"
+  },
+  "parametros_entrada": {
+    "sac": {
+      "numero": "SAC_100000",
+      "nome": "Consulta Beneficiario"
+    },
+    "env": {
+      "base_url": "http://10.130.113.19/TSNMVC/TSNMVC/Home/AreaLogada",
+      "usuario": "",
+      "senha": "",
+      "base_db_preferida": "DES8"
+    },
+    "entrada": {
+      "associados": [
+        "9942890280304008"
+      ],
+      "aguardar_contrato_carregar_s": 10
+    },
+    "menu": {
+      "fonte": [
+        "tests/menu-identificadores/menu-identificadores.json",
+        "tests/menu-identificadores/MENU_IDENTIFICADORES.md",
+        "skills/sac-request-authoring/SKILL.md",
+        "skills/funcoes-elementos-html/SKILL.md",
+        "skills/sac-request-authoring/assets/request.template.json"
+      ],
+      "itens": [
+        {
+          "index": 1,
+          "chave": "consulta_beneficiario",
+          "data_modulo_funcao": "40.ATB0082",
+          "texto": "Consulta Beneficiario"
+        }
+      ]
+    },
+    "telas": {
+      "consulta_beneficiario": {
+        "frame_url_hint": "cal0087a.asp",
+        "campos": {
+          "num_associado_id": "num_associado",
+          "acao_continuar_texto": "Continuar"
+        },
+        "acoes_html": [
+          {
+            "index": 1,
+            "acao_index": 2,
+            "elemento_index": 1,
+            "op": {
+              "valor": "9942890280304008"
+            }
+          },
+          {
+            "index": 2,
+            "acao_index": 3,
+            "elemento_index": 2
+          }
+        ]
+      }
+    },
+    "elementos_html": {
+      "elementos": [
+        {
+          "index": 1,
+          "idHtml": "num_associado",
+          "descricao": "Numero do associado"
+        },
+        {
+          "index": 2,
+          "idHtml": "acao_continuar",
+          "selector": "input[type=\"submit\"][value*=\"Continuar\" i]",
+          "descricao": "Acao Continuar"
+        }
+      ]
+    },
+    "regras": {
+      "associado_digits_deve_vir_de": "entrada.associados (somente numeros)"
+    },
+    "execucao": {
+      "delay_entre_passos_ms": 2000,
+      "timeout_por_passo_ms": 30000,
+      "modo_visual": true,
+      "sempre_mostrar_cliques": true,
+      "sempre_logar_clique_fill_read": true
+    },
+    "saida": {
+      "spec_dir": "tests/{numero_sac}/",
+      "video": {
+        "por_contrato": true,
+        "formato": "webm",
+        "nome": "{contrato}.webm"
+      },
+      "relatorio_md": "{numero_sac}_report.md"
+    },
+    "passos": [
+      "1-4: abrir URL, preencher usuario/senha, entrar, validar area logada",
+      "5-6: para cada associado, validar area logada",
+      "7-10: menu Consulta Beneficiario (40.ATB0082), informar num_associado, clicar Continuar",
+      "11-14: aguardar carregar tela (cal0087b), scroll fim, mostrar dados do beneficiario, scroll inicio",
+      "15: clicar Sair do atendimento"
+    ],
+    "sucesso_quando": "Tela de Consulta Beneficiario exibida com dados do associado.",
+    "referencias": [
+      "requests_ia/request_SAC_100000"
+    ]
+  }
+}
