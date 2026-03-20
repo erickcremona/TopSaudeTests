@@ -1,4 +1,4 @@
-# Learnings - TopSaude SAC Tests
+﻿# Learnings - TopSaude SAC Tests
 
 ## 2026-03-12
 
@@ -7,4 +7,10 @@
 
 ## 2026-03-13
 
-- O spec `tests/SAC_166839/sac-166839-vcom.spec.ts` foi ajustado para reutilizar `tests/src/funcoes_acesso_menu.ts` (`FuncoesAcessoMenu`) na abertura de menus por `data-modulo-funcao`/identificador `k_*`, removendo implementacao local de navegação por menu.
+- O spec `tests/SAC_166839/sac-166839-vcom.spec.ts` foi ajustado para reutilizar `tests/src/funcoes_acesso_menu.ts` (`FuncoesAcessoMenu`) na abertura de menus por `data-modulo-funcao`/identificador `k_*`, removendo implementacao local de navegacao por menu.
+
+## 2026-03-20
+
+- No cenario `SAC_167226` (`Contratos e Beneficiarios > Contratos Pessoa Juridica > Alteracao`), o comportamento real da tela mostrou que o passo descrito como "clicar em Continuar" na pratica acontece ao remover o foco do campo `#num_contrato`.
+- Para esse padrao, os agents devem preferir: preencher `#num_contrato` -> retirar foco (`Tab`, `blur()` e/ou clique fora do campo) -> aguardar carregamento da tela de detalhes.
+- Nao assumir que existe um botao `Continuar` funcional nesse ponto do fluxo; validar primeiro se o carregamento ocorre por blur do campo.

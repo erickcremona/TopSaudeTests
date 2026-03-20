@@ -1,0 +1,51 @@
+{
+  "objetivo": "Validar na tela de Alteracao de Contratos Pessoa Juridica que os campos ind_administradora e ind_guarda_chuva nao podem permanecer marcados ao mesmo tempo para o contrato 22994063273.",
+  "sac": {
+    "numero": "SAC_167226",
+    "nome": "Contrato Administradora"
+  },
+  "env": {
+    "base_url": "",
+    "usuario": "",
+    "senha": "",
+    "base_db_preferida": "DES8"
+  },
+  "entrada": {
+    "contratos": ["22994063273"],
+    "aguardar_contrato_carregar_s": 25
+  },
+  "menu": {
+    "alteracao": {
+      "data_modulo_funcao": "80.CB10.4",
+      "texto": "Alteracao"
+    }
+  },
+  "telas": {
+    "alteracao": {
+      "frame_url_hint": "ass0086a.asp",
+      "campo_contrato_id": "num_contrato"
+    },
+    "contrato": {
+      "frame_url_hint": "ass0045a.asp",
+      "campo_administradora_id": "ind_administradora",
+      "campo_guarda_chuva_id": "ind_guarda_chuva"
+    }
+  },
+  "execucao": {
+    "delay_entre_passos_ms": 2000,
+    "timeout_por_passo_ms": 30000,
+    "modo_visual": true,
+    "sempre_mostrar_cliques": true,
+    "sempre_logar_clique_fill_read": true
+  },
+  "passos": [
+    "1: logar no TopSaude",
+    "2: acessar no menu Contratos e Beneficiarios > Contratos Pessoa Juridica > Alteracao",
+    "3: informar o contrato 22994063273",
+    "4: remover o foco do campo contrato",
+    "5: clicar no checked ind_guarda_chuva para deixar marcado e depois desmarcar o checked",
+    "6: clicar no checked ind_administradora e clicar em OK no alert",
+    "7: verificar se nao e possivel deixar os dois campos checked"
+  ],
+  "sucesso_quando": "O teste e considerado sucesso quando nao for possivel deixar checked os campos ind_administradora e ind_guarda_chuva ao mesmo tempo; quando clicar em um, o outro deve ficar desabilitado ou permanecer desmarcado."
+}

@@ -25,7 +25,8 @@ Servir como "agente de entrada" para decidir:
 - Encaminhar somente quando for claramente uma solicitação de teste.
 - Em caso de ambiguidade, fazer **1 pergunta** curta para classificar (API vs UI).
 - Não inventar detalhes: quando faltar endpoint/URL/campos, pedir o mínimo essencial.
-- Exceção para login: se o usuário pedir "logar no TopSaude" ou "logar na api" e não informar dados de login, usar `config-app.json` (objeto `login`) como padrão e apenas confirmar o tipo de autenticação quando for relevante (token/bearer vs basic).
+- Exceção para login e URL padrão: se o usuário pedir "logar no TopSaude" ou "logar na api" e não informar a URL, usar `config-app.json` (objeto `login`) como padrão.
+- Se também não informar dados de login, usar `config-app.json` (objeto `login`) como padrão e apenas confirmar o tipo de autenticação quando for relevante (token/bearer vs basic).
 - Anti-overlap: sempre eleger um único "dono" (um skill) por solicitação de teste e finalizar com handoff claro.
 
 ## Observação

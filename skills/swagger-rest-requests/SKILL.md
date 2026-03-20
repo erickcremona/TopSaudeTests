@@ -41,6 +41,7 @@ Quando o usuÃ¡rio escrever o cenÃ¡rio em linguagem natural, converta para um
 Mapeamento sugerido:
 
 - **URL do Swagger** -> `env.base_url`
+  - Se o usuario nao informar a URL, usar `config-app.json` em `login.api.url` como padrao.
 - **Credenciais** -> `env.usuario` e `env.senha`
   - Se o usuÃ¡rio solicitar "logar na api" e nÃ£o informar dados de login, usar `config-app.json` em `login.api` como padrÃ£o (URL + credenciais).
   - Para API, respeitar o tipo de autenticaÃ§Ã£o indicado pelo usuÃ¡rio e escolher as credenciais correspondentes em `config-app.json`:

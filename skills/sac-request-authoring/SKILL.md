@@ -20,6 +20,9 @@ Transformar conhecimento de “como testar” (menus/telas/regras/frames) em um 
    - ou rode `skills/sac-request-authoring/scripts/new-request.ps1`
 2) Preencher `env`:
    - `base_url`, `usuario`, `senha` (e `base_db_preferida` se a aplicação tiver seleção de base)
+   - Se a URL nao vier no pedido, preencher `env.base_url` a partir de `config-app.json`:
+     - UI TopSaude -> `login.topSaude.url`
+     - API/Swagger -> `login.api.url`
 3) Preencher `menu` com identificadores estáveis:
    - preferir `data_modulo_funcao` (ex.: `80.CB10.4`) em vez de texto (risco de mojibake / alteração visual)
    - se precisar descobrir, use `tests/menu-identificadores/menu-identificadores.json` (ou regenere com o spec de menu)
@@ -43,6 +46,7 @@ Quando o usuÃ¡rio escrever o cenÃ¡rio em linguagem natural, converta para um
 Mapeamento sugerido:
 
 - **URL / sistema** -> `env.base_url` (URL de login ou home da Ã¡rea logada)
+  - Se o usuario nao informar a URL, usar `config-app.json` como fonte padrao antes de perguntar.
 - **Credenciais** -> `env.usuario`, `env.senha` (e `env.base_db_preferida` se existir)
 - **Entradas do cenário** -> `entrada.*` (ex.: `entrada.entradas[]` com `{ tipo, valores[] }`; manter `entrada.contratos[]` como compat/alias quando o identificador for contrato; `entrada.aguardar_contrato_carregar_s`)
 - **Menus citados** -> `menu.<chave> = { data_modulo_funcao, texto? }`

@@ -25,8 +25,8 @@ if (-not $json.sac -or -not $json.sac.numero -or -not $json.sac.nome) {
   Fail "Campos obrigatórios ausentes: sac.numero e sac.nome"
 }
 
-if (-not $json.env -or -not $json.env.base_url -or -not $json.env.usuario -or -not $json.env.senha) {
-  Fail "Campos obrigatórios ausentes: env.base_url, env.usuario, env.senha"
+if (-not $json.env -or -not $json.env.usuario -or -not $json.env.senha) {
+  Fail "Campos obrigatorios ausentes: env.usuario e env.senha. env.base_url pode ser omitido quando o agent usar config-app.json como padrao."
 }
 
 if (-not $json.entrada -or ((-not $json.entrada.entradas -or $json.entrada.entradas.Count -lt 1) -and (-not $json.entrada.contratos -or $json.entrada.contratos.Count -lt 1))) {

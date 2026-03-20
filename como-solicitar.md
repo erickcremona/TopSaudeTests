@@ -7,6 +7,9 @@ Forneça passo a passo numerado (o repo converte isso em test.step(...)).
 Defina escopo (um cenário por vez): “criar spec”, “ajustar spec que falhou”, “gerar request JSON”, “extrair menu”.
 Informe dados mínimos (sem inventar): URL base/Swagger, endpoint(s), como autentica, e campos-chave do response; ou menu data_modulo_funcao, frame_url_hint, ids/seletores.
 Se já falhou, mande o erro exato + qual comando rodou; para correção rápida, peça success-guided-spec.
+Se voce nao informar a URL, os agents devem usar `config-app.json` como fonte padrao:
+- TopSaude UI: `login.topSaude.url`
+- API/Swagger: `login.api.url`
 Templates prontos (copie e cole)
 
 --------------------------------

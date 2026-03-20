@@ -18,6 +18,7 @@ description: Criar/ajustar testes E2E Playwright de SAC (TopSaude) a partir de u
 2) Normalizar variaveis:
    - `sac.numero`, `sac.nome`
    - `env.base_url`, `env.usuario`, `env.senha`, `env.base_db_preferida` (se existir combobox)
+     - Se o usuario nao informar a URL, usar `config-app.json` em `login.topSaude.url` como padrao.
      - Se o usuÃ¡rio solicitar "logar no TopSaude" e nÃ£o informar dados de login, usar os valores de `config-app.json` em `login.topSaude` como padrÃ£o (URL/usuÃ¡rio/senha).
    - Entradas do cenário (não assumir só contrato):
      - Preferir `entrada.entradas[]` com `{ tipo, valores[] }` (ex.: contrato, associado, pedido, cpf, cnpj; pode haver mais de um tipo)
@@ -88,3 +89,10 @@ description: Criar/ajustar testes E2E Playwright de SAC (TopSaude) a partir de u
 - Registrar novos padroes estaveis de menu/frame em `skills/menu-references/LEARNINGS.md` quando surgir algo reutilizavel.
 - Base de codigo sempre alimentada: rodar `node scripts/seed_success_base.js` e/ou confirmar atualizacao automatica via reporter.
 - Fechar janela/modal antes do login quando existir (especialmente avisos de senha).
+
+
+## Regra adicional
+
+- Em telas de Alteracao de contrato, quando o usuario disser "clicar em Continuar" logo apos preencher `#num_contrato`, valide primeiro se o carregamento real acontece ao remover o foco do campo (`Tab`, `blur()` ou clique fora).
+- Se esse comportamento existir, prefira reproduzir o blur em vez de procurar um botao `Continuar`.
+- Em fluxos como `Contratos Pessoa Juridica > Alteracao`, o "Continuar" pode ser implicito: retirar o foco de `#num_contrato` pode disparar o carregamento da tela seguinte sem clique adicional.
