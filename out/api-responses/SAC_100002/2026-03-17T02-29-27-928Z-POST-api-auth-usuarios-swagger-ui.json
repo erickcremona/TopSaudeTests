@@ -1,0 +1,31 @@
+{
+  "sucesso": true,
+  "mensagem": "Operação realizada com sucesso",
+  "accessToken": "<REDACTED_TOKEN>",
+  "userToken": {
+    "codigoUsuario": "TOPDOWN",
+    "tipoUsuario": "4",
+    "claims": [
+      {
+        "tipo": "sub",
+        "valor": "TOPDOWN"
+      },
+      {
+        "tipo": "jti",
+        "valor": "17c6d88d-5c85-4a20-aa96-b95dc0e969ae"
+      },
+      {
+        "tipo": "nbf",
+        "valor": "1773714565"
+      },
+      {
+        "tipo": "iat",
+        "valor": "1773714565"
+      },
+      {
+        "tipo": "tipoUsuario",
+        "valor": "4"
+      }
+    ]
+  }
+}

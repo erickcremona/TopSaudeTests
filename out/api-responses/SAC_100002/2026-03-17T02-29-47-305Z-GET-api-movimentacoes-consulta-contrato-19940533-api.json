@@ -1,0 +1,1086 @@
+{
+  "contrato": {
+    "codigoTsContrato": "19940533",
+    "declaracaoSaude": false,
+    "quantidadeVidas": 204,
+    "dadosBasicos": {
+      "codigoOperadora": 1,
+      "nomeOperadora": "Unimed Seguros Saude SA",
+      "codigoFilial": 1,
+      "nomeFilial": "FILIAL SÃO PAULO",
+      "codigoInspetoria": 1,
+      "nomeInspetoria": "MATRIZ",
+      "codigoProduto": 1,
+      "formaContratacao": "CompulsorioObrigatorio",
+      "codigoTipoContrato": 5,
+      "nomeTipoContrato": "Coletivo Empresarial com Patrocínio",
+      "codigoPorteContrato": 2,
+      "nomePorteContrato": "Grande Empresa (acima 50 vidas)",
+      "tipoProduto": "Medico",
+      "vigencia": "1997-09-01T00:00:00",
+      "codigoProdutorTS": 2243,
+      "codigoCorretorTS": 2243,
+      "codigoRegiao": "133",
+      "permiteMovOnline": "S",
+      "regraComissaoCanalExterno": "N",
+      "mesAniversario": "Setembro",
+      "codigoFormacaoPreco": 1,
+      "pontoEquilibrio": 70,
+      "apresentacaoSinistralidade": "SinistralidadeCompetencia",
+      "codigoFormaApuracao": 1,
+      "atualizaContratoPmeAuto": "S",
+      "indPME": "N",
+      "exigeTermoContributario": "S",
+      "observacao": "EM 01/07/200…<REDACTED>…. KAMILA",
+      "codigoGrupoEmpresa": "224",
+      "nomeGrupoEmpresa": "224 - TEREOS ACUCAR E ENERGIA BRASIL SA",
+      "codigoTitularContrato": 91115,
+      "dataInicioCobranca": "01/09/2025",
+      "movimentoCadastral": "A",
+      "exibeMatriculaCarteira": "N",
+      "classificacaoEmpresa": "GrandeGrupo",
+      "tipoPessoa": "J",
+      "regulamentado": "S"
+    },
+    "empresaContratante": {
+      "codigoEntidadeTs": "91115",
+      "nomeEntidadeTitular": "TEREOS ACUCAR E ENERGIA BRASIL S.A.",
+      "nomeTitularContrato": "TEREOS ACUCAR E ENERGIA BRASIL S.A.",
+      "cnpj": "47080619000117",
+      "codigoAtividadeEconomica": 1071600,
+      "tipoPublicoCRM": "PessoaJuridica"
+    },
+    "enderecosContratante": [
+      {
+        "localizacao": "S",
+        "correspondencia": "S",
+        "informacoesFinanceiras": "S",
+        "cep": "15064000",
+        "logradouro": "V AC GUERINO BERTOCO",
+        "numero": "SN",
+        "complemento": "KM 5 ROD ASSIS CHATEAUBRIAND KM 155",
+        "codigoMunicipio": 9425,
+        "nomeMunicipio": "Olímpia",
+        "codigoBairro": 69999,
+        "nomeBairro": "Área Rural de Olímpia",
+        "uf": "SP"
+      }
+    ],
+    "perfilMassaContratada": {
+      "quantidadeVidas": 57,
+      "quantidadeMinimaVidas": 50,
+      "pemiteInclusaoForaPrazo": "N",
+      "novosTitularesDe": 0,
+      "novosTitularesAte": 31,
+      "dependentesAgregados": 31
+    },
+    "planosContratados": [
+      {
+        "codigoPlano": "PLE2R",
+        "nomePlano": "UNIMED PLUS EXECUTIVO II",
+        "codigoRegistroANS": 400691997,
+        "codigoRedeAtendimento": 14,
+        "codigoAcompanhante": "9",
+        "indicadorAcomodacao": "A",
+        "codigoTipoCartao": 1,
+        "codigoPrimeiraViaKit": 2,
+        "codigoSegundaViaKit": 9,
+        "codigoKitRenovacao": 8,
+        "tipoPeriodoCobertura": "AnoBeneficiario",
+        "inicioValidade": "2002-10-01T00:00:00",
+        "coparticipacao": "S",
+        "abrangencia": 1
+      },
+      {
+        "codigoPlano": "PLE5R",
+        "nomePlano": "UNIMED PLUS EXECUTIVO V",
+        "codigoRegistroANS": 400694991,
+        "codigoRedeAtendimento": 22,
+        "codigoAcompanhante": "9",
+        "indicadorAcomodacao": "A",
+        "codigoTipoCartao": 1,
+        "codigoPrimeiraViaKit": 2,
+        "codigoSegundaViaKit": 9,
+        "codigoKitRenovacao": 8,
+        "tipoPeriodoCobertura": "AnoBeneficiario",
+        "inicioValidade": "2007-01-01T00:00:00",
+        "coparticipacao": "S",
+        "abrangencia": 1
+      }
+    ],
+    "precos": [
+      {
+        "codigoPlano": "PLE2R",
+        "nomePlano": "UNIMED PLUS EXECUTIVO II",
+        "dataInicioVigencia": "2025-09-02T00:00:00",
+        "tipoFaixaEtaria": {
+          "implantacao": {
+            "titular": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "dependente": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "agregado": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "inativo": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            }
+          },
+          "posImplantacao": {
+            "titular": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "dependente": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "agregado": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "inativo": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            }
+          }
+        },
+        "valorFaixaEtaria": {
+          "titular": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            }
+          },
+          "inativo": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 463.83
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 538.44
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 625.05
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 766.86
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 908.64
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 1080.8
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 1135.22
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 1529.78
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 2061.59
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 2778.25
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "codigoPlano": "PLE5R",
+        "nomePlano": "UNIMED PLUS EXECUTIVO V",
+        "dataInicioVigencia": "2025-09-02T00:00:00",
+        "tipoFaixaEtaria": {
+          "implantacao": {
+            "titular": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "dependente": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "agregado": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "inativo": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            }
+          },
+          "posImplantacao": {
+            "titular": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "dependente": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "agregado": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            },
+            "inativo": {
+              "tipoFaixa": 3,
+              "descricaoFaixa": "Faixa ANS (10)"
+            }
+          }
+        },
+        "valorFaixaEtaria": {
+          "titular": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            }
+          },
+          "dependente": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            }
+          },
+          "agregado": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            }
+          },
+          "inativo": {
+            "implantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            },
+            "posImplantacao": {
+              "faixas": [
+                {
+                  "codigo": 1,
+                  "faixaEtaria": "até 18 anos",
+                  "mensalidade": 954.27
+                },
+                {
+                  "codigo": 2,
+                  "faixaEtaria": "de 19 até 23 anos",
+                  "mensalidade": 1107.78
+                },
+                {
+                  "codigo": 3,
+                  "faixaEtaria": "de 24 até 28 anos",
+                  "mensalidade": 1285.87
+                },
+                {
+                  "codigo": 4,
+                  "faixaEtaria": "de 29 até 33 anos",
+                  "mensalidade": 1577.61
+                },
+                {
+                  "codigo": 5,
+                  "faixaEtaria": "de 34 até 38 anos",
+                  "mensalidade": 1869.26
+                },
+                {
+                  "codigo": 6,
+                  "faixaEtaria": "de 39 até 43 anos",
+                  "mensalidade": 2223.58
+                },
+                {
+                  "codigo": 7,
+                  "faixaEtaria": "de 44 até 48 anos",
+                  "mensalidade": 2335.35
+                },
+                {
+                  "codigo": 8,
+                  "faixaEtaria": "de 49 até 53 anos",
+                  "mensalidade": 3147.21
+                },
+                {
+                  "codigo": 9,
+                  "faixaEtaria": "de 54 até 58 anos",
+                  "mensalidade": 4241.24
+                },
+                {
+                  "codigo": 10,
+                  "faixaEtaria": "mais de 59 anos",
+                  "mensalidade": 5715.67
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  "sucesso": true,
+  "mensagemRetorno": "Realizado com sucesso."
+}
