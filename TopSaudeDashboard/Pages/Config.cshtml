@@ -1,0 +1,107 @@
+﻿@page
+@model TopSaudeDashboard.Pages.ConfigModel
+@{
+    ViewData["Title"] = "Configuração";
+}
+
+<div class="d-flex justify-content-between align-items-start mb-2">
+    <div>
+        <h2 class="mb-1">Configuração</h2>
+        <div class="text-muted">Edite `config-app.json` e `.env` e consulte `como-solicitar.md`.</div>
+    </div>
+</div>
+
+<div class="alert alert-danger d-none alert-inline" id="cfgError"></div>
+<div class="alert alert-success d-none" id="cfgOk"></div>
+
+<ul class="nav nav-tabs" id="cfgTabs" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="tab-app" data-bs-toggle="tab" data-bs-target="#pane-app" type="button" role="tab">config-app.json</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="tab-env" data-bs-toggle="tab" data-bs-target="#pane-env" type="button" role="tab">.env</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="tab-doc" data-bs-toggle="tab" data-bs-target="#pane-doc" type="button" role="tab">como-solicitar.md</button>
+  </li>
+</ul>
+
+<div class="tab-content border border-top-0 rounded-bottom p-3">
+  <div class="tab-pane fade show active" id="pane-app" role="tabpanel">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <div class="text-muted">Fonte: `config-app.json` (raiz do repo)</div>
+      <button class="btn btn-primary" id="btnSaveApp">Salvar</button>
+    </div>
+    <textarea class="form-control" id="appContent" rows="18" spellcheck="false"></textarea>
+  </div>
+
+  <div class="tab-pane fade" id="pane-env" role="tabpanel">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <div class="text-muted">Fonte: `.env` (raiz do repo)</div>
+      <button class="btn btn-primary" id="btnSaveEnv">Salvar</button>
+    </div>
+
+    <div class="alert alert-info">
+      Para usar Codex na versão paga, informe `OPENAI_API_KEY` (ou `CODEX_API_KEY`) no `.env`. Se não informar, o dashboard tenta usar `codex --oss` (provider local).
+    </div>
+
+    <textarea class="form-control" id="envContent" rows="18" spellcheck="false"></textarea>
+  </div>
+
+  <div class="tab-pane fade" id="pane-doc" role="tabpanel">
+    <div class="text-muted mb-2">Fonte: `como-solicitar.md`</div>
+    <pre class="code-box" id="docContent"></pre>
+  </div>
+</div>
+
+@section Scripts {
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const err = $("cfgError");
+  const ok = $("cfgOk");
+
+  async function load(){
+    window.topSaude.clearAlert(err);
+    window.topSaude.clearAlert(ok);
+
+    const app = await window.topSaude.apiFetch('/api/config/app');
+    const env = await window.topSaude.apiFetch('/api/config/env');
+    const doc = await window.topSaude.apiFetch('/api/docs/como-solicitar');
+
+    $("appContent").value = app.content || '';
+    $("envContent").value = env.content || '';
+    $("docContent").textContent = doc.content || '';
+  }
+
+  async function saveApp(){
+    window.topSaude.clearAlert(err);
+    window.topSaude.clearAlert(ok);
+
+    await window.topSaude.apiFetch('/api/config/app', {
+      method: 'PUT',
+      body: JSON.stringify({ content: $("appContent").value })
+    });
+
+    window.topSaude.setAlert(ok, 'config-app.json salvo com sucesso.', 'alert-success');
+  }
+
+  async function saveEnv(){
+    window.topSaude.clearAlert(err);
+    window.topSaude.clearAlert(ok);
+
+    await window.topSaude.apiFetch('/api/config/env', {
+      method: 'PUT',
+      body: JSON.stringify({ content: $("envContent").value })
+    });
+
+    window.topSaude.setAlert(ok, '.env salvo com sucesso.', 'alert-success');
+  }
+
+  $("btnSaveApp").addEventListener('click', () => saveApp().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger')));
+  $("btnSaveEnv").addEventListener('click', () => saveEnv().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger')));
+
+  load().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger'));
+})();
+</script>
+}

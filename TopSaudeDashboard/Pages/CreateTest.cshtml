@@ -1,0 +1,208 @@
+﻿@page
+@model TopSaudeDashboard.Pages.CreateTestModel
+@{
+    ViewData["Title"] = "Criar teste";
+}
+
+<div class="d-flex justify-content-between align-items-start mb-3">
+    <div>
+        <h2 class="mb-1">Criar teste</h2>
+        <div class="text-muted">Gera request + spec usando os agents (skills) deste repo via Codex em tempo de execução.</div>
+    </div>
+    <button class="btn btn-outline-secondary" id="btnNew">Novo SAC</button>
+</div>
+
+<div class="alert alert-danger d-none alert-inline" id="createError"></div>
+<div class="alert alert-success d-none" id="createOk"></div>
+
+<div class="row g-3">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="mb-2">
+                    <label class="form-label">SAC</label>
+                    <input class="form-control" id="sacNumero" placeholder="Ex.: 166839" disabled />
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Nome demanda</label>
+                    <input class="form-control" id="sacNome" placeholder="Ex.: Demanda" disabled />
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Passo a passo do teste</label>
+                    <textarea class="form-control" id="passos" rows="14" placeholder="Digite aqui o passo a passo numerado..." disabled></textarea>
+                    <div class="form-text">Dica: use passos numerados (1,2,3...) e um critério de sucesso observável.</div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" id="btnGerar" disabled>Gerar teste</button>
+                    <button class="btn btn-outline-primary" id="btnGerarEExecutar" disabled>Gerar e rodar (headed)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="fw-semibold">Log do job</div>
+                    <div class="text-muted" id="jobStatus"></div>
+                </div>
+                <pre class="code-box" id="jobLog">Aguardando...</pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal SAC -->
+<div class="modal" tabindex="-1" id="sacModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Novo SAC</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-2">
+          <label class="form-label">Número do SAC</label>
+          <input class="form-control" id="modalSacNumero" placeholder="166839" />
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Nome demanda</label>
+          <input class="form-control" id="modalSacNome" placeholder="Demanda" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="modalOk">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const err = $("createError");
+  const ok = $("createOk");
+
+  const modalEl = $("sacModal");
+  const modal = new bootstrap.Modal(modalEl, { backdrop: 'static' });
+
+  let currentJob = null;
+  let sse = null;
+
+  function enableForm(enabled){
+    ["sacNumero","sacNome","passos","btnGerar","btnGerarEExecutar"].forEach(id => {
+      $(id).disabled = !enabled;
+    });
+  }
+
+  function openModal(){
+    $("modalSacNumero").value = '';
+    $("modalSacNome").value = '';
+    modal.show();
+  }
+
+  function closeModal(){
+    modal.hide();
+  }
+
+  $("btnNew").addEventListener('click', openModal);
+
+  $("modalOk").addEventListener('click', () => {
+    const n = $("modalSacNumero").value.trim();
+    const name = $("modalSacNome").value.trim();
+    if (!n || !name) {
+      window.topSaude.setAlert(err, 'Informe número e nome do SAC.', 'alert-danger');
+      return;
+    }
+
+    window.topSaude.clearAlert(err);
+    window.topSaude.clearAlert(ok);
+
+    $("sacNumero").value = n;
+    $("sacNome").value = name;
+    $("passos").value = '';
+    enableForm(true);
+
+    closeModal();
+  });
+
+  async function generate(andRun){
+    window.topSaude.clearAlert(err);
+    window.topSaude.clearAlert(ok);
+
+    const sacNumero = $("sacNumero").value.trim();
+    const sacNome = $("sacNome").value.trim();
+    const passos = $("passos").value.trim();
+
+    if (!sacNumero || !sacNome || !passos){
+      window.topSaude.setAlert(err, 'Preencha SAC, nome e passo a passo.', 'alert-danger');
+      return;
+    }
+
+    $("jobLog").textContent = '';
+    $("jobStatus").textContent = 'Executando...';
+
+    const job = await window.topSaude.apiFetch('/api/generate', {
+      method: 'POST',
+      body: JSON.stringify({ sacNumero, sacNome, passos })
+    });
+
+    currentJob = job;
+
+    if (sse) sse.close();
+    sse = window.topSaude.connectJobSse(job.id, (line) => {
+      const el = $("jobLog");
+      el.textContent += line + "\n";
+      el.scrollTop = el.scrollHeight;
+    }, async () => {
+      const state = await window.topSaude.apiFetch(`/api/jobs/${encodeURIComponent(job.id)}`);
+      $("jobStatus").textContent = state.info.state;
+
+      if (state.info.state === 2) {
+        window.topSaude.setAlert(err, state.info.error || 'Falha ao gerar.', 'alert-danger');
+        return;
+      }
+
+      window.topSaude.setAlert(ok, 'Geração concluída. Veja os arquivos no log.', 'alert-success');
+
+      if (andRun) {
+        const specLine = (state.lines || []).find(l => l.includes('escrito: tests/') && l.endsWith('.spec.ts'));
+        if (!specLine) return;
+        const specPath = specLine.split('escrito: ')[1].trim();
+
+        const runJob = await window.topSaude.apiFetch('/api/specs/run', {
+          method: 'POST',
+          body: JSON.stringify({ path: specPath, mode: 'headed' })
+        });
+
+        $("jobLog").textContent += `\n[INFO] Rodando spec: ${specPath}\n`;
+        if (sse) sse.close();
+        sse = window.topSaude.connectJobSse(runJob.id, (line) => {
+          const el = $("jobLog");
+          el.textContent += line + "\n";
+          el.scrollTop = el.scrollHeight;
+        }, async () => {
+          const state2 = await window.topSaude.apiFetch(`/api/jobs/${encodeURIComponent(runJob.id)}`);
+          $("jobStatus").textContent = state2.info.state;
+          if (state2.info.state === 2) window.topSaude.setAlert(err, state2.info.error || 'Falha ao rodar spec.', 'alert-danger');
+        });
+      }
+    });
+
+    return job;
+  }
+
+  $("btnGerar").addEventListener('click', () => generate(false).catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger')));
+  $("btnGerarEExecutar").addEventListener('click', () => generate(true).catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger')));
+
+  // init
+  enableForm(false);
+  openModal();
+})();
+</script>
+}
+

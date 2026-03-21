@@ -1,0 +1,226 @@
+﻿@page
+@model TopSaudeDashboard.Pages.VideosModel
+@{
+    ViewData["Title"] = "Rodar vídeo";
+}
+
+<div class="d-flex justify-content-between align-items-start mb-2">
+    <div>
+        <h2 class="mb-1">Rodar vídeo</h2>
+        <div class="text-muted">Navegue por `tests/{SAC_XXXXXX}/videos` e reproduza arquivos `.webm`.</div>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-success" id="btnExport" href="#">Exportar Excel</a>
+        <button class="btn btn-outline-primary" id="btnRefresh">Atualizar</button>
+    </div>
+</div>
+
+<div class="alert alert-danger d-none alert-inline" id="videoError"></div>
+
+<div class="row g-3 mb-2">
+    <div class="col-md-4">
+        <label class="form-label">De (UTC)</label>
+        <input class="form-control" type="datetime-local" id="from" />
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Até (UTC)</label>
+        <input class="form-control" type="datetime-local" id="to" />
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">SAC (filtro)</label>
+        <input class="form-control" id="sac" placeholder="SAC_166839" />
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-lg-3">
+        <div class="card">
+            <div class="card-body sidebar">
+                <div class="fw-semibold mb-2">SACs</div>
+                <div class="list-group" id="sacList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="fw-semibold mb-2" id="filesTitle">Arquivos .webm</div>
+                <div class="table-responsive" style="max-height: 70vh; overflow:auto;">
+                    <table class="table table-sm align-middle">
+                        <thead>
+                            <tr>
+                                <th>Arquivo</th>
+                                <th class="text-end">Atualizado (UTC)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="filesBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="fw-semibold">Player</div>
+                    <button class="btn btn-primary" id="btnPlay" disabled>Rodar vídeo</button>
+                </div>
+                <div class="text-muted mb-2" id="selectedVideo">Selecione um .webm</div>
+                <video class="video-player" id="player" controls></video>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const err = $("videoError");
+
+  let videos = [];
+  let selectedSac = null;
+  let selectedVideoPath = null;
+
+  function fromLocalInputValue(value){
+    if (!value) return null;
+    return value + ':00Z';
+  }
+
+  function queryParams(){
+    const from = fromLocalInputValue($("from").value);
+    const to = fromLocalInputValue($("to").value);
+    const sac = $("sac").value.trim();
+
+    const qs = new URLSearchParams();
+    if (from) qs.set('from', from);
+    if (to) qs.set('to', to);
+    if (sac) qs.set('sac', sac);
+    return qs;
+  }
+
+  function renderSacList(){
+    const sacs = {};
+    videos.forEach(v => {
+      if (!v.sac) return;
+      sacs[v.sac] = (sacs[v.sac] || 0) + 1;
+    });
+
+    const list = $("sacList");
+    list.innerHTML = '';
+
+    const entries = Object.entries(sacs).sort((a,b) => a[0].localeCompare(b[0]));
+    if (entries.length === 0) {
+      list.innerHTML = '<div class="text-muted">Nenhum vídeo encontrado.</div>';
+      return;
+    }
+
+    entries.forEach(([sac, count]) => {
+      const a = document.createElement('a');
+      a.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+      a.href = '#';
+      a.textContent = sac;
+      const badge = document.createElement('span');
+      badge.className = 'badge text-bg-secondary rounded-pill';
+      badge.textContent = count;
+      a.appendChild(badge);
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        selectedSac = sac;
+        selectedVideoPath = null;
+        $("selectedVideo").textContent = 'Selecione um .webm';
+        $("btnPlay").disabled = true;
+        renderFiles();
+        Array.from(list.querySelectorAll('a')).forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      });
+      list.appendChild(a);
+    });
+  }
+
+  function renderFiles(){
+    const body = $("filesBody");
+    body.innerHTML = '';
+
+    if (!selectedSac){
+      $("filesTitle").textContent = 'Arquivos .webm';
+      return;
+    }
+
+    $("filesTitle").textContent = `tests/${selectedSac}/videos`;
+
+    const list = videos
+      .filter(v => v.sac === selectedSac)
+      .sort((a,b) => (b.lastWriteTime || '').localeCompare(a.lastWriteTime || ''));
+
+    list.forEach(v => {
+      const tr = document.createElement('tr');
+      tr.className = 'file-row';
+      tr.innerHTML = `<td>${escapeHtml(v.fileName)}</td><td class="text-end"><span class="text-muted">${(v.lastWriteTime||'').replace('Z','')}</span></td>`;
+      tr.addEventListener('click', () => {
+        selectedVideoPath = v.path;
+        $("selectedVideo").textContent = v.path;
+        $("btnPlay").disabled = false;
+        Array.from(body.querySelectorAll('tr')).forEach(x => x.classList.remove('table-primary'));
+        tr.classList.add('table-primary');
+      });
+      body.appendChild(tr);
+    });
+
+    if (list.length === 0) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td colspan="2" class="text-muted">Nenhum .webm encontrado para este SAC.</td>';
+      body.appendChild(tr);
+    }
+  }
+
+  function escapeHtml(str){
+    return (str || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  }
+
+  async function refresh(){
+    window.topSaude.clearAlert(err);
+
+    const qs = queryParams();
+    const data = await window.topSaude.apiFetch('/api/videos?' + qs.toString());
+    videos = data || [];
+
+    renderSacList();
+
+    if (!selectedSac) {
+      selectedSac = Object.keys(videos.reduce((acc, v) => { if (v.sac && v.sac.startsWith('SAC_')) acc[v.sac] = true; return acc; }, {})).sort()[0] || null;
+      if (selectedSac) {
+        const first = $("sacList").querySelector('a');
+        if (first) first.classList.add('active');
+      }
+    }
+
+    renderFiles();
+    $("btnExport").href = '/api/videos/export?' + qs.toString();
+  }
+
+  function play(){
+    if (!selectedVideoPath) return;
+    const player = $("player");
+    const url = '/api/videos/stream?path=' + encodeURIComponent(selectedVideoPath);
+    player.src = url;
+    player.play();
+  }
+
+  $("btnRefresh").addEventListener('click', () => refresh().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger')));
+  $("btnPlay").addEventListener('click', play);
+
+  // init from query string
+  const q = new URLSearchParams(location.search);
+  const fromQ = q.get('from');
+  const toQ = q.get('to');
+  if (fromQ) $("from").value = fromQ.replace('Z','').slice(0,16);
+  if (toQ) $("to").value = toQ.replace('Z','').slice(0,16);
+
+  refresh().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger'));
+})();
+</script>
+}

@@ -1,0 +1,86 @@
+﻿html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+/* Dashboard */
+.kpi-card {
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.15);
+}
+
+.mini-chart {
+  width: 100%;
+  height: 56px;
+}
+
+.mini-chart .line {
+  fill: none;
+  stroke: #0d6efd;
+  stroke-width: 2;
+}
+
+.mini-chart .area {
+  fill: rgba(13, 110, 253, 0.15);
+}
+
+.mini-chart .point {
+  fill: #0d6efd;
+}
+
+.code-box {
+  background: #0b0f19;
+  color: #e6edf3;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  max-height: 360px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+}
+
+.sidebar {
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.file-row {
+  cursor: pointer;
+}
+
+.file-row:hover {
+  background: rgba(13, 110, 253, 0.08);
+}
+
+.video-player {
+  width: 100%;
+  max-height: 65vh;
+  background: #000;
+}
+
+.alert-inline {
+  white-space: pre-wrap;
+}
