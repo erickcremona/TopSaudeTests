@@ -1,5 +1,5 @@
 {
-  "objetivo": "Validar na tela de Alteracao de Contratos Pessoa Juridica que os campos ind_administradora e ind_guarda_chuva nao podem permanecer marcados ao mesmo tempo para o contrato 22994063273.",
+  "objetivo": "Criar nova versao do cenario de teste para verificar Contrato Administradora na tela de Alteracao de Contratos Pessoa Juridica para o contrato 22994063273.",
   "sac": {
     "numero": "SAC_167226",
     "nome": "Contrato Administradora"
@@ -47,5 +47,5 @@
     "6: clicar no checked ind_administradora e clicar em OK no alert",
     "7: verificar se nao e possivel deixar os dois campos checked"
   ],
-  "sucesso_quando": "O teste e considerado sucesso quando nao for possivel deixar checked os campos ind_administradora e ind_guarda_chuva ao mesmo tempo; quando clicar em um, o outro deve ficar desabilitado ou permanecer desmarcado."
+  "sucesso_quando": "O teste e considerado sucesso quando nao for possivel deixar checked os campos ind_administradora e ind_guarda_chuva ao mesmo tempo. Quando clicar em um, o outro deve ficar desabilitado."
 }

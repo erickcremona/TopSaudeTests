@@ -114,6 +114,19 @@ public static class ApiEndpoints
             return Results.Ok(job);
         });
 
+        api.MapPost("/codex/open", ([FromServices] CodexRunner codex) =>
+        {
+            try
+            {
+                codex.OpenCodexApp();
+                return Results.Ok(new { ok = true });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Results.BadRequest(new { error = ex.Message });
+            }
+        });
+
         api.MapGet("/jobs/{id}", (
             [FromServices] JobManager jobs,
             [FromRoute] string id) =>
@@ -187,6 +200,28 @@ public static class ApiEndpoints
             var abs = workspace.ToAbsolutePath("config-app.json");
             files.WriteTextPreservingEncoding(abs, request.Content);
             return Results.Ok(new { ok = true });
+        });
+
+        api.MapGet("/codex/test", async (
+            [FromServices] CodexRunner codex,
+            CancellationToken cancellationToken) =>
+        {
+            try
+            {
+                var result = await codex.TestConfigurationAsync(cancellationToken);
+                return Results.Ok(new
+                {
+                    ok = true,
+                    executablePath = result.ExecutablePath,
+                    version = result.Version,
+                    authMode = result.AuthMode,
+                    detail = result.Detail,
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Results.BadRequest(new { error = ex.Message });
+            }
         });
 
         api.MapGet("/docs/como-solicitar", ([FromServices] WorkspaceLocator workspace, [FromServices] TextFileService files) =>

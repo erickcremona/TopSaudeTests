@@ -9,7 +9,10 @@
         <h2 class="mb-1">Criar teste</h2>
         <div class="text-muted">Gera request + spec usando os agents (skills) deste repo via Codex em tempo de execução.</div>
     </div>
-    <button class="btn btn-outline-secondary" id="btnNew">Novo SAC</button>
+    <div class="d-flex gap-2">
+        <button class="btn btn-outline-primary" id="btnOpenCodex">Abrir Codex</button>
+        <button class="btn btn-outline-secondary" id="btnNew">Novo SAC</button>
+    </div>
 </div>
 
 <div class="alert alert-danger d-none alert-inline" id="createError"></div>
@@ -110,6 +113,13 @@
   }
 
   $("btnNew").addEventListener('click', openModal);
+  $("btnOpenCodex").addEventListener('click', async () => {
+    window.topSaude.clearAlert(err);
+    window.topSaude.clearAlert(ok);
+
+    await window.topSaude.apiFetch('/api/codex/open', { method: 'POST' });
+    window.topSaude.setAlert(ok, 'Aplicativo do Codex aberto.', 'alert-success');
+  });
 
   $("modalOk").addEventListener('click', () => {
     const n = $("modalSacNumero").value.trim();

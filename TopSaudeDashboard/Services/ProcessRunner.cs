@@ -18,8 +18,11 @@ public sealed class ProcessRunner
 
         mode = string.IsNullOrWhiteSpace(mode) ? "headed" : mode.Trim().ToLowerInvariant();
 
-        var specPathWindows = specWorkspaceRelativePath.Replace('/', '\\');
-        var quotedSpec = QuoteArg(specPathWindows);
+        // O argumento de arquivo do Playwright e tratado como pattern/regex;
+        // com barras invertidas no Windows ele pode nao casar com o path do arquivo.
+        // Manter o path relativo do workspace com "/" evita "No tests found".
+        var specPathPlaywright = specWorkspaceRelativePath.Replace('\\', '/');
+        var quotedSpec = QuoteArg(specPathPlaywright);
 
         // Preferir o runner local para nao cair no cache do npx.
         var cliPath = ".\\node_modules\\@playwright\\test\\cli.js";

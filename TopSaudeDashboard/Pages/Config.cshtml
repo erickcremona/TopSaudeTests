@@ -38,14 +38,37 @@
   <div class="tab-pane fade" id="pane-env" role="tabpanel">
     <div class="d-flex justify-content-between align-items-center mb-2">
       <div class="text-muted">Fonte: `.env` (raiz do repo)</div>
-      <button class="btn btn-primary" id="btnSaveEnv">Salvar</button>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-primary" id="btnTestCodex">Testar Codex</button>
+        <button class="btn btn-primary" id="btnSaveEnv">Salvar</button>
+      </div>
     </div>
 
     <div class="alert alert-info">
-      Para usar Codex na versão paga, informe `OPENAI_API_KEY` (ou `CODEX_API_KEY`) no `.env`. Se não informar, o dashboard tenta usar `codex --oss` (provider local).
+      Para usar Codex na versão paga, informe `OPENAI_API_KEY` (ou `CODEX_API_KEY`) no `.env`. Sem essa chave, o dashboard so usa `codex --oss` quando ja existir um provider local configurado no Codex CLI, como `lmstudio` ou `ollama`.
     </div>
 
     <textarea class="form-control" id="envContent" rows="18" spellcheck="false"></textarea>
+    <pre class="code-box mt-3 d-none" id="codexTestResult"></pre>
+
+    <div class="mt-3">
+      <div class="fw-semibold mb-2">Exemplos de provider OSS</div>
+      <div class="text-muted mb-2">Arquivo: `%USERPROFILE%\.codex\config.toml`</div>
+
+      <div class="mb-2">Exemplo com `ollama`:</div>
+      <pre class="code-box">model = "gpt-5.4"
+model_reasoning_effort = "medium"
+oss_provider = "ollama"</pre>
+
+      <div class="mb-2">Exemplo com `lmstudio`:</div>
+      <pre class="code-box">model = "gpt-5.4"
+model_reasoning_effort = "medium"
+oss_provider = "lmstudio"</pre>
+
+      <div class="form-text">
+        Depois de salvar o `config.toml`, deixe o provider local em execucao e clique em `Testar Codex`.
+      </div>
+    </div>
   </div>
 
   <div class="tab-pane fade" id="pane-doc" role="tabpanel">
@@ -60,6 +83,7 @@
   const $ = (id) => document.getElementById(id);
   const err = $("cfgError");
   const ok = $("cfgOk");
+  const codexTestResult = $("codexTestResult");
 
   async function load(){
     window.topSaude.clearAlert(err);
@@ -98,8 +122,31 @@
     window.topSaude.setAlert(ok, '.env salvo com sucesso.', 'alert-success');
   }
 
+  async function testCodex(){
+    window.topSaude.clearAlert(err);
+    window.topSaude.clearAlert(ok);
+    codexTestResult.classList.add('d-none');
+    codexTestResult.textContent = '';
+
+    const result = await window.topSaude.apiFetch('/api/codex/test');
+    codexTestResult.textContent =
+      `Status: ok\n` +
+      `Modo: ${result.authMode}\n` +
+      `Versao: ${result.version}\n` +
+      `Executavel: ${result.executablePath}\n` +
+      `Detalhe: ${result.detail}`;
+    codexTestResult.classList.remove('d-none');
+
+    window.topSaude.setAlert(ok, 'Codex validado com sucesso.', 'alert-success');
+  }
+
   $("btnSaveApp").addEventListener('click', () => saveApp().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger')));
   $("btnSaveEnv").addEventListener('click', () => saveEnv().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger')));
+  $("btnTestCodex").addEventListener('click', () => testCodex().catch(e => {
+    codexTestResult.classList.add('d-none');
+    codexTestResult.textContent = '';
+    window.topSaude.setAlert(err, e.message, 'alert-danger');
+  }));
 
   load().catch(e => window.topSaude.setAlert(err, e.message, 'alert-danger'));
 })();
