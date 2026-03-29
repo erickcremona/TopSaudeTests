@@ -1,5 +1,5 @@
 {
-  "objetivo": "Criar nova versao do cenario de teste para verificar Contrato Administradora na tela de Alteracao de Contratos Pessoa Juridica para o contrato 22994063273.",
+  "objetivo": "Criar nova versao do cenario de teste para verificar Contrato Administradora na tela de Alteracao de Contratos Pessoa Juridica para o contrato 22994039584.",
   "sac": {
     "numero": "SAC_167226",
     "nome": "Contrato Administradora"
@@ -11,7 +11,7 @@
     "base_db_preferida": "DES8"
   },
   "entrada": {
-    "contratos": ["22994063273"],
+    "contratos": ["22994039584"],
     "aguardar_contrato_carregar_s": 25
   },
   "menu": {
@@ -41,7 +41,7 @@
   "passos": [
     "1: logar no TopSaude",
     "2: acessar no menu Contratos e Beneficiarios > Contratos Pessoa Juridica > Alteracao",
-    "3: informar o contrato 22994063273",
+    "3: informar o contrato 22994039584",
     "4: remover o foco do campo contrato",
     "5: clicar no checked ind_guarda_chuva para deixar marcado e depois desmarcar o checked",
     "6: clicar no checked ind_administradora e clicar em OK no alert",

@@ -85,3 +85,12 @@ Quando faltar informaÃ§Ã£o, pergunte apenas o essencial (ex.: qual `data_mod
 - `*_selector`: usar quando não há `id` (ex.: fechar janela)
 - `passos`: manter numerado (1-4, 5-6…) para bater com o entendimento humano
 - `sucesso_quando`: texto curto, verificável na UI
+
+## Regra obrigatoria de login via `config-app.json`
+
+- Sempre que o pedido mencionar login, sistema, ambiente ou execucao, consultar `config-app.json`.
+- Ler o array `login[]`.
+- Identificar o sistema pelo primeiro campo de cada objeto.
+- Exemplo obrigatorio: `logar no topsaude` -> objeto cujo primeiro campo e `TopSaude`.
+- Depois de localizar o objeto correto, preencher `env.base_url` e demais dados de autenticacao a partir dele.
+- Se o objeto localizado tiver campo `payload`, informar esse arquivo no payload da solicitacao e reutiliza-lo como referencia quando fizer sentido.

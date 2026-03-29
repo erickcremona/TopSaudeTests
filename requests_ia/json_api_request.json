@@ -71,7 +71,6 @@
   },
   "faturamento": {
     "dadosPrimeiroBoleto": {
-      "faturaPrimeiroBoleto": "S",
       "TipoInclusaoGrupo": "ContratoPrincipalExistente",
       "codigoTsContratoPrincipal": "19940533",
       "numeroProposta": "8800001000001185",

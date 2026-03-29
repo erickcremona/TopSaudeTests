@@ -10,11 +10,16 @@ interface:
 
     Follow the reference implementation `tests/SAC_166839/sac-166839-vcom.spec.ts` for:
     - one test per input item when per-item video is required (do not assume only contract)
+    - persistent success video copy in `tests/{SAC}/videos/{valor}.webm`
     - menu navigation derived from `tests/menu-identificadores/menu-identificadores.json` using `attrs["data-modulo-funcao"]`
     - robust frame/iframe detection (DOM-first, url-hint fallback)
     - visual click evidence (center + highlight) and logging for click/fill/read
     - strict derived-data rules (digits from `#nome_grupo_empresa.value` -> fill `#cod_grupo_empresa`)
     - step-level timeouts (~30s) and 2s delay between steps
+
+    Mandatory evidence rule:
+    - Always keep `test.use({ video: 'on' })` at top level.
+    - Always persist the success video in `tests/{SAC}/videos/` with a stable filename per input item.
 
     Scenario inputs:
     - Do not assume the request is driven exclusively by `entrada.contratos`.

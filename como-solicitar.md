@@ -23,3 +23,6 @@ UI (SAC/TopSaúde) — dono: top-saude-sac-tests (e, se faltar menu, menu-refere
 --------------------------------
 Ajuste pós-falha — dono: success-guided-spec
 “Use success-guided-spec para corrigir tests/<SAC>/<spec>.spec.ts. Aqui está o output da falha: <cole o trecho>. Objetivo: menor correção possível e reexecutar o mesmo spec.”
+
+Regra adicional de login via `config-app.json`
+Se o pedido mencionar login, sistema ou ambiente, os agents devem consultar `config-app.json` no array `login[]`, identificar o alvo pelo primeiro campo de cada objeto e usar esse objeto como fonte padrao. Exemplo: `logar no topsaude` -> objeto `TopSaude`. Se o objeto encontrado tiver `payload`, esse arquivo deve ser informado no payload/handoff da solicitacao.

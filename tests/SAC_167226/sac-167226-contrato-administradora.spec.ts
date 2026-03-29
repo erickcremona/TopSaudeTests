@@ -407,6 +407,17 @@ async function ensureUnchecked(locator: Locator, fieldName: string): Promise<voi
     .toBe(false);
 }
 
+async function expectDisabledState(locator: Locator, fieldName: string, expectedDisabled: boolean): Promise<CheckboxState> {
+  await expect
+    .poll(async () => (await getCheckboxState(locator)).disabled, {
+      timeout: 5_000,
+      message: `${fieldName} deveria ficar ${expectedDisabled ? 'disabled' : 'enabled'}`,
+    })
+    .toBe(expectedDisabled);
+
+  return getCheckboxState(locator);
+}
+
 async function tryHandleModalOk(page: Page): Promise<boolean> {
   const dialog = page.locator('[role="dialog"]:visible, .modal:visible, .k-window:visible, .ui-dialog:visible').last();
   if (!(await dialog.count().catch(() => 0))) return false;
@@ -453,15 +464,15 @@ function assertMutualExclusion(adminState: CheckboxState, guardaState: CheckboxS
 
   if (guardaState.checked) {
     expect(
-      adminState.disabled || !adminState.checked,
-      `Com ind_guarda_chuva checked, ind_administradora deveria estar disabled ou unchecked. Estados: admin=${JSON.stringify(adminState)} guarda=${JSON.stringify(guardaState)}`,
+      adminState.disabled,
+      `Com ind_guarda_chuva checked, ind_administradora deveria estar disabled. Estados: admin=${JSON.stringify(adminState)} guarda=${JSON.stringify(guardaState)}`,
     ).toBe(true);
   }
 
   if (adminState.checked) {
     expect(
-      guardaState.disabled || !guardaState.checked,
-      `Com ind_administradora checked, ind_guarda_chuva deveria estar disabled ou unchecked. Estados: admin=${JSON.stringify(adminState)} guarda=${JSON.stringify(guardaState)}`,
+      guardaState.disabled,
+      `Com ind_administradora checked, ind_guarda_chuva deveria estar disabled. Estados: admin=${JSON.stringify(adminState)} guarda=${JSON.stringify(guardaState)}`,
     ).toBe(true);
   }
 }
@@ -469,7 +480,91 @@ function assertMutualExclusion(adminState: CheckboxState, guardaState: CheckboxS
 test.setTimeout(15 * 60 * 1000);
 test.use({ video: 'on' });
 
+const SAC_NUMERO = REQUEST.sac.numero;
+const OUT_DIR = path.resolve(__dirname);
+const VIDEO_DIR = path.resolve(OUT_DIR, 'videos');
+
 test.describe.serial(`${REQUEST.sac.numero} - ${REQUEST.sac.nome}`, () => {
+  test.beforeAll(() => {
+    fs.mkdirSync(VIDEO_DIR, { recursive: true });
+  });
+
+  test.afterEach(async ({}, testInfo) => {
+    if (testInfo.status !== 'passed') return;
+
+    const contrato = REQUEST.entrada.contratos.find((value) => testInfo.title.includes(value));
+    if (!contrato) return;
+
+    const dst = path.resolve(VIDEO_DIR, `${contrato}.webm`);
+    fs.mkdirSync(VIDEO_DIR, { recursive: true });
+
+    const rootsToSearch = [
+      testInfo.outputDir,
+      path.dirname(testInfo.outputDir),
+      path.dirname(path.dirname(testInfo.outputDir)),
+      path.resolve(OUT_DIR, 'pw-results-sac167226'),
+      path.resolve(__dirname, '..', '..', 'test-results'),
+    ];
+
+    const seen = new Set<string>();
+    const findVideo = (root: string): string => {
+      if (!root || seen.has(root)) return '';
+      seen.add(root);
+      if (!fs.existsSync(root)) return '';
+
+      const stack: string[] = [root];
+      while (stack.length) {
+        const dir = stack.pop()!;
+        let entries: fs.Dirent[] = [];
+        try {
+          entries = fs.readdirSync(dir, { withFileTypes: true });
+        } catch {
+          continue;
+        }
+
+        for (const ent of entries) {
+          const full = path.join(dir, ent.name);
+          if (ent.isDirectory()) {
+            if (/node_modules/i.test(ent.name)) continue;
+            stack.push(full);
+            continue;
+          }
+          if (!ent.isFile()) continue;
+          if (ent.name.toLowerCase() !== 'video.webm') continue;
+          if (!full.includes(contrato)) continue;
+          return full;
+        }
+      }
+
+      return '';
+    };
+
+    let src = '';
+    for (const root of rootsToSearch) {
+      src = findVideo(root);
+      if (src) break;
+    }
+
+    if (!src) {
+      const fromVideo = testInfo.video?.path();
+      if (fromVideo && fs.existsSync(fromVideo)) src = fromVideo;
+    }
+
+    if (!src) {
+      // eslint-disable-next-line no-console
+      console.log(`[${SAC_NUMERO}] VIDEO: nao localizado para contrato ${contrato}`);
+      return;
+    }
+
+    try {
+      fs.copyFileSync(src, dst);
+      // eslint-disable-next-line no-console
+      console.log(`[${SAC_NUMERO}] VIDEO: salvo em ${dst} (origem: ${src})`);
+    } catch {
+      // ignore copy failure
+    }
+  });
+
   for (const contrato of REQUEST.entrada.contratos) {
     test(`Contrato ${contrato}`, async ({ page }) => {
       const menu = new FuncoesAcessoMenu(page, { log: (msg) => logAction('MENU', msg) });
@@ -504,7 +599,12 @@ test.describe.serial(`${REQUEST.sac.numero} - ${REQUEST.sac.nome}`, () => {
         await expect(guardaChuva).toHaveCount(1);
         await expect(administradora).toHaveCount(1);
         await ensureChecked(guardaChuva, 'ind_guarda_chuva');
+        const adminWhileGuardaChecked = await expectDisabledState(administradora, 'ind_administradora', true);
+        const guardaWhileChecked = await getCheckboxState(guardaChuva);
+        assertMutualExclusion(adminWhileGuardaChecked, guardaWhileChecked);
+
         await ensureUnchecked(guardaChuva, 'ind_guarda_chuva');
+        await expectDisabledState(administradora, 'ind_administradora', false);
 
         const adminAfterUncheck = await getCheckboxState(administradora);
         const guardaAfterUncheck = await getCheckboxState(guardaChuva);
@@ -538,6 +638,10 @@ test.describe.serial(`${REQUEST.sac.numero} - ${REQUEST.sac.nome}`, () => {
         logAction('STATE', `ind_guarda_chuva=${JSON.stringify(guardaState)}`);
 
         assertMutualExclusion(adminState, guardaState);
+        if (adminState.checked) {
+          expect(guardaState.disabled, 'Ao marcar ind_administradora, ind_guarda_chuva deve ficar disabled.').toBe(true);
+        }
+
         expect(
           adminState.checked || guardaState.checked,
           'Apos a tentativa de alteracao, pelo menos um dos campos deveria manter um estado definido de selecao.',

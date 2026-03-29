@@ -27,9 +27,10 @@ powershell -NoProfile -ExecutionPolicy Bypass -File skills/success-guided-spec/s
 
 3) Rode o teste. Quando passar, o success base é atualizado automaticamente (não precisa fazer nada manual).
 
+4) Em specs UI/SAC, preserve ou adicione a copia do `video.webm` de sucesso para `tests/{SAC}/videos/{valor}.webm`.
+
 ## Dicas de query
 
 - Para API: `swagger`, `endpoint`, `token`, `status 200`, paths `/api/...`
 - Para UI: `data-modulo-funcao`, `frame_url_hint`, `kendo`, ids de campos/botões
 - Para SAC: `SAC_166839`, nome do cenário, contratos, módulos
-

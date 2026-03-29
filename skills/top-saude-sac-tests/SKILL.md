@@ -70,6 +70,8 @@ description: Criar/ajustar testes E2E Playwright de SAC (TopSaude) a partir de u
   - Quando houver video por item, copiar `video.webm` para um path estável (ex.: `tests/{SAC}/videos/{valor}.webm`) no `afterEach`.
   - Ancorar paths em `__dirname` para evitar variacao de CWD entre workers.
 
+  - Essa copia do video em `tests/{SAC}/videos/` e obrigatoria quando o teste passar; manter nome estavel por item de entrada.
+
 ## Mapeamento dos passos (exemplo request_top_saude)
 
 - Passos 1–4: `page.goto(base_url)`, preencher usuario/senha, clicar entrar, validar area logada.
@@ -89,6 +91,7 @@ description: Criar/ajustar testes E2E Playwright de SAC (TopSaude) a partir de u
 - Registrar novos padroes estaveis de menu/frame em `skills/menu-references/LEARNINGS.md` quando surgir algo reutilizavel.
 - Base de codigo sempre alimentada: rodar `node scripts/seed_success_base.js` e/ou confirmar atualizacao automatica via reporter.
 - Fechar janela/modal antes do login quando existir (especialmente avisos de senha).
+- Sempre persistir o video de sucesso em `tests/{SAC}/videos/`.
 
 
 ## Regra adicional
@@ -96,3 +99,12 @@ description: Criar/ajustar testes E2E Playwright de SAC (TopSaude) a partir de u
 - Em telas de Alteracao de contrato, quando o usuario disser "clicar em Continuar" logo apos preencher `#num_contrato`, valide primeiro se o carregamento real acontece ao remover o foco do campo (`Tab`, `blur()` ou clique fora).
 - Se esse comportamento existir, prefira reproduzir o blur em vez de procurar um botao `Continuar`.
 - Em fluxos como `Contratos Pessoa Juridica > Alteracao`, o "Continuar" pode ser implicito: retirar o foco de `#num_contrato` pode disparar o carregamento da tela seguinte sem clique adicional.
+
+## Regra obrigatoria de login via `config-app.json`
+
+- Sempre que o pedido mencionar login, sistema, ambiente ou execucao, consultar `config-app.json`.
+- Ler o array `login[]`.
+- Identificar o sistema pelo primeiro campo de cada objeto.
+- Exemplo obrigatorio: `logar no topsaude` -> objeto cujo primeiro campo e `TopSaude`.
+- Depois de localizar o objeto correto, usar esse objeto como fonte padrao para URL e credenciais/envs.
+- Se o objeto localizado tiver campo `payload`, informar esse arquivo no payload ou handoff do pedido.
